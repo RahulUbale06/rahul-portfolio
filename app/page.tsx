@@ -92,14 +92,15 @@ export default function Home() {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <button className="group relative w-full overflow-hidden rounded-xl border border-blue-300/40 bg-blue-500/90 px-7 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-400 hover:shadow-[0_10px_35px_rgba(59,130,246,0.45)] sm:w-auto">
+          <a href="#Projects"><button className="group relative w-full overflow-hidden rounded-xl border border-blue-300/40 bg-blue-500/90 px-7 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-400 hover:shadow-[0_10px_35px_rgba(59,130,246,0.45)] sm:w-auto">
             <span className="relative z-10">View Projects</span>
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
           </button>
-
-          <button className="w-full rounded-xl border border-slate-500/50 bg-slate-900/40 px-7 py-3 font-semibold text-slate-100 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/70 hover:bg-blue-500/10 hover:text-blue-100 sm:w-auto">
+          </a>
+          <a href="#Contact"><button  className="w-full rounded-xl border border-slate-500/50 bg-slate-900/40 px-7 py-3 font-semibold text-slate-100 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/70 hover:bg-blue-500/10 hover:text-blue-100 sm:w-auto">
             Contact Me
           </button>
+          </a>
         </div>
       </section>
 
