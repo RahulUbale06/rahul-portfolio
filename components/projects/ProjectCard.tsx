@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, ArrowUpRight } from "lucide-react";
+import { GitHub, ArrowUpRight } from "lucide-react";
 
 type Project = {
   id: string;
@@ -65,7 +65,7 @@ export default function ProjectCard({
             rel="noopener noreferrer"
             className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 px-8 py-4 text-lg font-medium text-white transition-all duration-300 hover:border-cyan-400/60 hover:bg-cyan-500/10"
           >
-            <Github size={22} />
+            <GitHub size={22} />
             GitHub
           </a>
 
