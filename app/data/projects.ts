@@ -1,4 +1,13 @@
-
+export type Project = {
+  id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  tech: string[];
+  githubUrl?: string;
+  demoUrl?: string;
+};
 export const projects = [
   {
     id: "interior-designer",
