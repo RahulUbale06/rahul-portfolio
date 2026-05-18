@@ -72,13 +72,24 @@ export default function Home() {
         id="hero"
         className="relative z-10 mx-auto w-full max-w-5xl rounded-3xl border border-blue-500/20 bg-white/[0.03] p-6 shadow-[0_0_60px_rgba(37,99,235,0.18)] backdrop-blur-2xl transition-all duration-500 sm:p-10 lg:p-14"
       >
-      <div className="mx-auto mb-2 flex w-fit justify-center">
+      {/* <div className="mx-auto mb-2 flex w-fit justify-center">
         <img
-          src="/Fireeyes_image.png"
+          src="/blue_bg_hero.png"
           alt="Rahul Ubale"
           className="h-40 w-40 rounded-full border-4 border-blue-400/40 object-cover shadow-[0_0_50px_rgba(59,130,246,0.6)]"
         />
-      </div>
+      </div> */}
+      <div className="mx-auto mb-2 flex w-fit justify-center">
+  <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-blue-500 shadow-[0_0_40px_rgba(59,130,246,0.5)]">
+
+    <img
+      src="/blue_bg_hero.png"
+      alt="Rahul Ubale"
+      className="h-full w-full object-cover object-[center_20%] scale-115"
+    />
+
+  </div>
+</div>
 
         <h1 className="mt-6 text-center text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl">
           Rahul{" "}
