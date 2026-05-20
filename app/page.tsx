@@ -83,9 +83,9 @@ export default function Home() {
   <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-blue-500 shadow-[0_0_40px_rgba(59,130,246,0.5)]">
 
     <img
-      src="/blue_bg_hero.png"
+      src="/Rahul_ubale.png"
       alt="Rahul Ubale"
-      className="h-full w-full object-cover object-[center_20%] scale-115"
+      className="h-full w-full object-cover object-[center_5%] scale-115"
     />
 
   </div>
