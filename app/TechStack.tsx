@@ -158,7 +158,8 @@ useEffect(() => {
   
 
   return (
-    <div
+    <section
+    id="skills"
       className="w-full min-h-screen pt-12 flex flex-col items-center bg-black overflow-hidden"
       ref={containerRef}
       onClick={handleContainerClick}
@@ -294,6 +295,6 @@ useEffect(() => {
           })}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

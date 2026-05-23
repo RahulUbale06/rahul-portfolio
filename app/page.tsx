@@ -118,7 +118,7 @@ export default function Home() {
       <About />
       <TechStack />
       <div
-        id="skills"
+        id="skills1.1"
         ref={featureCardsRef}
         className="relative z-10 mx-auto mt-10 grid w-full max-w-5xl gap-3 text-center text-sm text-slate-300 sm:grid-cols-3"
       >
