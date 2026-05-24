@@ -4,18 +4,18 @@ import { TypeAnimation } from "react-type-animation";
 
 export default function Loader() {
   return (
-    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-[#030712]">
+    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center px-6 text-center overflow-hidden bg-[#030712]">
 
       {/* Background Glow */}
       <div className="absolute h-96 w-96 rounded-full bg-blue-500/20 blur-[120px]" />
 
       {/* Logo */}
-      <h1 className="animate-pulse bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-500 bg-clip-text text-5xl font-bold tracking-[0.35em] text-transparent sm:text-7xl">
+      <h1 className="animate-pulse bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-500 bg-clip-text text-3xl font-bold tracking-[0.22em] text-transparent sm:text-5xl lg:text-7xl">
         RAHUL.DEV
       </h1>
 
       {/* Typing Loader */}
-      <div className="mt-8 flex items-center text-sm uppercase tracking-[0.3em] text-slate-400 sm:text-base">
+      <div className="mt-8 flex items-center text-[10px] uppercase tracking-[0.22em] sm:text-sm text-slate-400 sm:text-base">
 
         <TypeAnimation
           sequence={[

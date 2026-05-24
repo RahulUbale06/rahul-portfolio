@@ -161,7 +161,7 @@ end: "bottom 15%",
         <div className="about-animate mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
 
           <div className="rounded-2xl border border-blue-500/15 bg-white/[0.03] p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:bg-blue-500/[0.08]">
-            <h3 className="text-2xl font-semibold text-white">3+</h3>
+            <h3 className="text-2xl font-semibold text-white">13+</h3>
             <p className="mt-2 text-sm text-slate-400">Projects Built</p>
           </div>
 
