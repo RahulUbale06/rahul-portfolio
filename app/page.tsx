@@ -16,16 +16,21 @@ export default function Home() {
   const featureCardsRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLElement | null>(null);
   const [loading, setLoading] = useState(true);
+  const [heroReady, setHeroReady] = useState(false);
   const heroRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
+
+setTimeout(() => {
+  setHeroReady(true);
+}, 100);
     }, 3200);
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      if (heroRef.current) {
+      if (heroRef.current && heroReady) {
 
         gsap.fromTo(
           ".hero-reveal",
@@ -103,7 +108,7 @@ export default function Home() {
 
     return () => ctx.revert();
     return () => clearTimeout(timer);
-  }, []);
+  }, [heroReady]);
 
   if (loading) {
     return <Loader />;
