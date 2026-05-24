@@ -1,8 +1,10 @@
  "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TypeAnimation } from "react-type-animation"; 
+import Loader from "./Loader";
 import Navbar from "./navbar";
 import About from "./about";
 import TechStack from "./TechStack";
@@ -13,11 +15,51 @@ import Contact from "./Contact";
 export default function Home() {
   const featureCardsRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLElement | null>(null);
+  const [loading, setLoading] = useState(true);
+  const heroRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3200);
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
+      if (heroRef.current) {
+
+        gsap.fromTo(
+          ".hero-reveal",
+          {
+            opacity: 0,
+            y: 80,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            stagger: 0.18,
+            ease: "power3.out",
+          }
+        );
+      
+        gsap.fromTo(
+          ".hero-image",
+          {
+            opacity: 0,
+            scale: 0.7,
+            rotate: 8,
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            rotate: 0,
+            duration: 1.5,
+            ease: "power4.out",
+            delay: 0.3,
+          }
+        );
+      
+      }
       if (featureCardsRef.current) {
         const cards = featureCardsRef.current.children;
         gsap.fromTo(
@@ -60,7 +102,12 @@ export default function Home() {
     });
 
     return () => ctx.revert();
+    return () => clearTimeout(timer);
   }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#030712] px-4 pb-16 pt-28 text-white sm:px-6 lg:px-8">
@@ -69,51 +116,153 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/0 via-slate-950/40 to-slate-950" />
 
       <section
-        id="hero"
-        className="relative z-10 mx-auto w-full max-w-5xl rounded-3xl border border-blue-500/20 bg-white/[0.03] p-6 shadow-[0_0_60px_rgba(37,99,235,0.18)] backdrop-blur-2xl transition-all duration-500 sm:p-10 lg:p-14"
-      >
-      {/* <div className="mx-auto mb-2 flex w-fit justify-center">
-        <img
-          src="/blue_bg_hero.png"
-          alt="Rahul Ubale"
-          className="h-40 w-40 rounded-full border-4 border-blue-400/40 object-cover shadow-[0_0_50px_rgba(59,130,246,0.6)]"
-        />
-      </div> */}
-      <div className="mx-auto mb-2 flex w-fit justify-center">
-  <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-blue-500 shadow-[0_0_40px_rgba(59,130,246,0.5)]">
+  ref={heroRef}
+  id="hero"
+  className="relative z-10 mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-10 overflow-hidden rounded-3xl border border-blue-500/20 bg-white/[0.03] p-6 shadow-[0_0_60px_rgba(37,99,235,0.18)] backdrop-blur-2xl transition-all duration-500 sm:p-8 lg:flex-row lg:justify-between lg:gap-16 lg:p-14
+   overflow-hidden rounded-3xl border border-blue-500/20 bg-white/[0.03] p-8 shadow-[0_0_60px_rgba(37,99,235,0.18)] backdrop-blur-2xl transition-all duration-500 lg:flex-row lg:justify-between lg:p-14"
+>
 
-    <img
-      src="/Rahul_ubale.png"
-      alt="Rahul Ubale"
-      className="h-full w-full object-cover object-[center_5%] scale-115"
-    />
+  {/* Animated Background Glow */}
+  <div className="absolute -left-20 top-10 h-52 w-52 sm:h-64 sm:w-64 lg:h-72 lg:w-72 rounded-full bg-blue-500/20 blur-[120px]" />
+  <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-cyan-500/10 blur-[140px]" />
+
+  {/* LEFT CONTENT */}
+  <div className="relative z-10 flex-1">
+
+    {/* Small Label */}
+    <p className="hero-reveal mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-blue-300">
+      AI & FULL STACK DEVELOPER
+    </p>
+
+    {/* Heading */}
+    <h1 className="hero-reveal text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+      Building{" "}
+      <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
+        Intelligent
+      </span>
+      <br />
+      Digital Experiences
+      <br />
+      For The Modern Web
+    </h1>
+
+    {/* Typing Animation */}
+    <div className="hero-reveal mt-8 flex items-center gap-1 text-2xl font-semibold sm:text-3xl">
+
+      <TypeAnimation
+        sequence={[
+          "AI Engineer",
+          2000,
+          "",
+          500,
+
+          "Cyber Security",
+          2000,
+          "",
+          500,
+
+          "System Design",
+          2000,
+          "",
+          500,
+
+          "Software Developer",
+          2000,
+          "",
+          500,
+
+          "Machine Learning Engineer",
+          2000,
+          "",
+          500,
+
+          "Data Analyst",
+          2000,
+          "",
+          500,
+
+          "Backend Developer",
+          2000,
+          "",
+          500,
+
+          "Full Stack Developer",
+          2000,
+          "",
+          500,
+        ]}
+        wrapper="span"
+        speed={50}
+        repeat={Infinity}
+        className="bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-500 bg-clip-text text-transparent"
+      />
+
+      <span className="animate-pulse text-cyan-300">|</span>
+    </div>
+
+    {/* Description */}
+    <p className="hero-reveal mt-8 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+      AI & Data Science student focused on full stack development,
+      intelligent systems, scalable software engineering, and modern UI experiences.
+    </p>
+
+    {/* Buttons */}
+    <div className="hero-reveal mt-8 flex flex-col gap-4 sm:flex-row">
+
+      <a href="#projects">
+        <button className="group relative overflow-hidden rounded-xl border border-blue-300/40 bg-blue-500/90 px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-400 hover:shadow-[0_10px_35px_rgba(59,130,246,0.45)]">
+
+          <span className="relative z-10">
+            View Projects
+          </span>
+
+          <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+        </button>
+      </a>
+
+      <a href="#contact">
+        <button className="rounded-xl border border-slate-500/50 bg-slate-900/40 px-8 py-4 font-semibold text-slate-100 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/70 hover:bg-blue-500/10 hover:text-blue-100">
+          Contact Me
+        </button>
+      </a>
+
+    </div>
 
   </div>
-</div>
 
-        <h1 className="mt-6 text-center text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl">
-          Rahul{" "}
-          <span className="bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
-            Ubale
-          </span>
-        </h1>
+  {/* RIGHT SIDE IMAGE */}
+  <div className="hero-image relative z-10 flex justify-center">
 
-        <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-slate-300 sm:text-lg lg:text-xl">
-          AI and Data Science student building sleek, high-performance digital experiences with full stack engineering, design systems, and modern product thinking.
-        </p>
+    {/* Glow Ring */}
+    <div className="absolute h-52 w-52 sm:h-64 sm:w-64 lg:h-72 lg:w-72 rounded-full bg-blue-500/20 blur-[80px]" />
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="#projects"><button className="group relative w-full overflow-hidden rounded-xl border border-blue-300/40 bg-blue-500/90 px-7 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-400 hover:shadow-[0_10px_35px_rgba(59,130,246,0.45)] sm:w-auto">
-            <span className="relative z-10">View Projects</span>
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-          </button>
-          </a>
-          <a href="#contact"><button  className="w-full rounded-xl border border-slate-500/50 bg-slate-900/40 px-7 py-3 font-semibold text-slate-100 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/70 hover:bg-blue-500/10 hover:text-blue-100 sm:w-auto">
-            Contact Me
-          </button>
-          </a>
-        </div>
-      </section>
+    {/* Rotating Border */}
+    <div className="absolute aspect-square w-60 rounded-full border border-cyan-400/20 border-t-cyan-300 opacity-60 animate-[spin_18s_linear_infinite] sm:w-72" />
+    <div className="absolute h-52 w-52 rounded-full border border-blue-500/20 blur-[1px] sm:h-64 sm:w-64" />
+    {/* Image */}
+    <div className="relative aspect-square w-52 animate-[float_5s_ease-in-out_infinite] overflow-hidden rounded-full border-4 border-blue-500 shadow-[0_0_60px_rgba(59,130,246,0.45)] sm:w-64 lg:w-72">
+      <img
+        src="/Rahul_ubale.png"
+        alt="Rahul Ubale"
+        className="h-full w-full object-cover object-[center_5%] scale-110"
+      />
+
+    </div>
+
+  </div>
+
+  {/* Scroll Indicator */}
+  <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center lg:flex">
+
+    <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
+      Scroll
+    </p>
+
+    <div className="mt-2 h-10 w-[1px] bg-gradient-to-b from-cyan-300 to-transparent animate-pulse" />
+
+  </div>
+
+</section>
 
       <About />
       <TechStack />
